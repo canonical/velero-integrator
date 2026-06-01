@@ -66,10 +66,18 @@ jobs:
 
   build:
     name: Build charm
-    needs:
-      - get-track
     uses: canonical/data-platform-workflows/.github/workflows/build_charm.yaml@v49.0.1
     with:
+      cache: true
+    permissions:
+      actions: read
+      contents: read
+
+  build-test-charm:
+    name: Build test charm
+    uses: canonical/data-platform-workflows/.github/workflows/build_charm.yaml@v49.0.1
+    with:
+      path-to-charm-directory: tests/integration/test-app
       cache: true
     permissions:
       actions: read
@@ -117,7 +125,11 @@ jobs:
 
       - name: Integration tests
         run: |
-          tox -vve integration -- --charm-path=${{ github.workspace }}/velero-integrator_ubuntu@24.04-amd64.charm
+          tox -vve integration
+        env:
+          CI: "true"
+          CHARM_PATH: ${{ github.workspace }}/velero-integrator_ubuntu@24.04-amd64.charm
+          TEST_APP_CHARM_PATH: ${{ github.workspace }}/tests/integration/test-app/test-app-velero-integrator_ubuntu@24.04-amd64.charm
 
       # On failure, capture debugging resources
       - name: Get all
@@ -166,9 +178,11 @@ jobs:
 
       - name: E2E Integration tests
         run: |
-          tox -vve integration-e2e -- --charm-path=${{ github.workspace }}/velero-integrator_ubuntu@24.04-amd64.charm
+          tox -vve integration-e2e
         env:
           CI: "true"
+          CHARM_PATH: ${{ github.workspace }}/velero-integrator_ubuntu@24.04-amd64.charm
+          TEST_APP_CHARM_PATH: ${{ github.workspace }}/tests/integration/test-app/test-app-velero-integrator_ubuntu@24.04-amd64.charm
 
       # On failure, capture debugging resources
       - name: Get all
