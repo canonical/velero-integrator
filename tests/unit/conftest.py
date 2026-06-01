@@ -21,18 +21,9 @@ from charm import VeleroIntegratorCharm  # noqa: E402
 from constants import STATUS_PEERS_RELATION_NAME  # noqa: E402
 
 # Load metadata files
-CHARMCRAFT = yaml.safe_load((project_root / "charmcraft.yaml").read_text())
+METADATA = yaml.safe_load((project_root / "metadata.yaml").read_text())
 ACTIONS = yaml.safe_load((project_root / "actions.yaml").read_text())
-
-# Build metadata dict from charmcraft.yaml
-METADATA = {
-    "name": CHARMCRAFT.get("name", "velero-integrator"),
-    "provides": CHARMCRAFT.get("provides", {}),
-    "peers": CHARMCRAFT.get("peers", {}),
-}
-
-# Build config schema from charmcraft.yaml
-CONFIG = {"options": CHARMCRAFT.get("config", {}).get("options", {})}
+CONFIG = yaml.safe_load((project_root / "config.yaml").read_text())
 
 
 def backup_target_app_data(

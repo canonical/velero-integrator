@@ -1,0 +1,35 @@
+# Copyright 2026 Canonical Ltd.
+# See LICENSE file for licensing details.
+
+name: velero-integrator
+summary: Integrator charm for managing scheduled backups with Velero.
+description: |
+  The Velero Integrator Charm acts as middleware between target applications
+  and the Velero Operator, enabling scheduled backup management.
+
+  It receives backup specifications from target applications via the
+  k8s-backup-target relation and forwards them to Velero Operator via
+  the velero-backup relation, adding schedule configuration.
+
+  This charm simplifies backup orchestration by separating "what to backup"
+  (defined by target apps) from "when to backup" (defined by operators).
+
+website: https://charmhub.io/velero-integrator
+docs: https://discourse.charmhub.io/t/velero-integrator-operator-documentation/20149
+issues: https://github.com/canonical/velero-integrator-operator/issues
+source: https://github.com/canonical/velero-integrator-operator
+
+assumes:
+  - k8s-api
+
+peers:
+  status-peers:
+    interface: velero_integrator_peers
+
+provides:
+  k8s-backup-target:
+    interface: k8s_backup_target
+    optional: true
+  velero-backup:
+    interface: velero_backup_config
+    optional: false
