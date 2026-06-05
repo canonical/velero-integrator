@@ -38,6 +38,7 @@ from helpers import (
 from lightkube import Client
 
 logger = logging.getLogger(__name__)
+logging.getLogger("jubilant.wait").setLevel("WARNING")
 
 TIMEOUT = 600
 VELERO_OPERATOR_CHANNEL = "edge"
