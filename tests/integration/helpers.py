@@ -23,7 +23,7 @@ from tenacity import (
 
 logger = logging.getLogger(__name__)
 
-METADATA = yaml.safe_load(Path("charmcraft.yaml").read_text())
+METADATA = yaml.safe_load(Path("metadata.yaml").read_text())
 APP_NAME = METADATA["name"]
 TEST_APP_NAME = "test-app-velero-integrator"
 VELERO_OPERATOR_APP_NAME = "velero-operator"

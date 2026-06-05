@@ -103,6 +103,7 @@ jobs:
     name: Integration tests
     needs:
       - build
+      - build-test-charm
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -156,6 +157,7 @@ jobs:
     name: E2E Integration tests
     needs:
       - build
+      - build-test-charm
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
