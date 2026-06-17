@@ -1,0 +1,27 @@
+# Copyright 2026 Canonical Ltd.
+# See LICENSE file for licensing details.
+
+options:
+  schedule:
+    description: |
+      Cron expression for scheduled backups (e.g., "0 2 * * *" for daily at 2 AM).
+      Leave empty for manual backup mode.
+    default: ""
+    type: string
+  paused:
+    description: |
+      Pause or resume scheduled backups. When true, the schedule is paused.
+    default: false
+    type: boolean
+  skip-immediately:
+    description: |
+      Skip immediate backup when a schedule is created.
+      By default, Velero creates a backup immediately when a schedule is created.
+    default: false
+    type: boolean
+  use-owner-references-in-backup:
+    description: |
+      Enable garbage collection. When true, backups created by the schedule
+      will be deleted when the schedule is deleted.
+    default: false
+    type: boolean

@@ -22,6 +22,7 @@ from helpers import (
 )
 
 logger = logging.getLogger(__name__)
+logging.getLogger("jubilant.wait").setLevel("WARNING")
 
 
 def test_build_and_deploy(
