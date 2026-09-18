@@ -277,14 +277,14 @@ pycparser = {version = "*", markers = "implementation_name != \"PyPy\""}
 
 [[package]]
 name = "charmlibs-interfaces-k8s-backup-target"
-version = "0.1.0.post0"
+version = "0.1.0.post1"
 description = "The charmlibs.interfaces.k8s-backup-target package."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "charmlibs_interfaces_k8s_backup_target-0.1.0.post0-py3-none-any.whl", hash = "sha256:91827aa1e75bbd178dbe6fcf11995f425c5300c5a08d78243563462cb4c8a4c2"},
-    {file = "charmlibs_interfaces_k8s_backup_target-0.1.0.post0.tar.gz", hash = "sha256:7452241b5573ad68b5d3d1e781a0858c81f78984c42e68778cdd981ceedcee8b"},
+    {file = "charmlibs_interfaces_k8s_backup_target-0.1.0.post1-py3-none-any.whl", hash = "sha256:5e17562477592690130360849450b6ff76f1967c2dd193369cfa4053fcdc76b9"},
+    {file = "charmlibs_interfaces_k8s_backup_target-0.1.0.post1.tar.gz", hash = "sha256:67725bc9794586d1452067b68e7a56a0d1f37972030b13b8ba83c5c93e5a33a1"},
 ]
 
 [package.dependencies]
